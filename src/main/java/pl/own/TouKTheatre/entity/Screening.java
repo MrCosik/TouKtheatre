@@ -8,6 +8,8 @@ public class Screening{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //different name for id in table here is because in Ticket entity I joinColumns in two places by
+    //id column and it confuses id with the one in entity so I changed the name of id here
     @Column(name = "screening_id")
     private Long id;
     @Column(name = "movie_id")
