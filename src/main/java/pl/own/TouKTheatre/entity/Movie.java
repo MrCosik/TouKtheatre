@@ -9,7 +9,7 @@ import java.util.Set;
 @Table(name = "movie")
 public class Movie {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
     @Column(name = "title")
@@ -17,14 +17,9 @@ public class Movie {
     @Column(name = "length_in_minutes")
     private int lengthInMinutes;
 
-
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }, mappedBy = "movies")
-    private Set<UserMovie> viewers = new HashSet<>();
-
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private Set<Screening> screenings = new HashSet<>();
 
     public Movie() {
     }
@@ -54,11 +49,19 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
     }
 
-    public Set<UserMovie> getViewers() {
-        return viewers;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setViewers(Set<UserMovie> viewers) {
-        this.viewers = viewers;
+    public Set<Screening> getScreenings() {
+        return screenings;
+    }
+
+    public void setScreenings(Set<Screening> screenings) {
+        this.screenings = screenings;
+    }
+
+    public void addScreening(Screening screening){
+        screenings.add(screening);
     }
 }
