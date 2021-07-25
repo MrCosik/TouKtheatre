@@ -12,11 +12,8 @@ public class Screening {
     //id column and it confuses id with the one in entity so I changed the name of id here
     @Column(name = "screening_id")
     private Long id;
-//    @Column(name = "movie_id")
-//    private Long movieId;
-//    @Column(name = "room_id")
-//    private Long roomId;
-    @Column
+
+    @Column(name = "time_of_start")
     private String timeOfStart;
 
 
@@ -31,21 +28,6 @@ public class Screening {
     public Screening() {
     }
 
-//
-//    public Screening(Long movieId, Long roomId, String timeOfStart) {
-//        this.movieId = movieId;
-//        this.roomId = roomId;
-//        this.timeOfStart = timeOfStart;
-//    }
-//
-//    public Screening(Long movieId, Long roomId, String timeOfStart, Movie movie, Room room) {
-//        this.movieId = movieId;
-//        this.roomId = roomId;
-//        this.timeOfStart = timeOfStart;
-//        this.movie = movie;
-//        this.room = room;
-//    }
-
     public Screening(String timeOfStart, Movie movie, Room room) {
         this.timeOfStart = timeOfStart;
         this.movie = movie;
@@ -59,22 +41,6 @@ public class Screening {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public Long getMovieId() {
-//        return movieId;
-//    }
-//
-//    public void setMovieId(Long movieId) {
-//        this.movieId = movieId;
-//    }
-//
-//    public Long getRoomId() {
-//        return roomId;
-//    }
-//
-//    public void setRoomId(Long roomId) {
-//        this.roomId = roomId;
-//    }
 
     public String getTimeOfStart() {
         return timeOfStart;
@@ -99,6 +65,8 @@ public class Screening {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+
 }
 
 

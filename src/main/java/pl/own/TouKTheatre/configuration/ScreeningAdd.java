@@ -22,14 +22,13 @@ public class ScreeningAdd implements CommandLineRunner {
     MovieRepository movieRepository;
     RoomRepository roomRepository;
     ScreeningRepository screeningRepository;
-    EntityManager entityManager;
 
 
-    public ScreeningAdd(MovieRepository movieRepository, RoomRepository roomRepository, ScreeningRepository screeningRepository, EntityManager entityManager) {
+    public ScreeningAdd(MovieRepository movieRepository, RoomRepository roomRepository, ScreeningRepository screeningRepository) {
         this.movieRepository = movieRepository;
         this.roomRepository = roomRepository;
         this.screeningRepository = screeningRepository;
-        this.entityManager = entityManager;
+
     }
 
     @Override
@@ -47,11 +46,9 @@ public class ScreeningAdd implements CommandLineRunner {
         );
 
 
-        Screening screening = new Screening("12:00",movies.get(1),rooms.get(1));
-//        movies.get(1).addScreening(screening,rooms.get(1));
+        Screening screening = new Screening("12:00", movies.get(1), rooms.get(1));
         roomRepository.saveAll(rooms);
         movieRepository.saveAll(movies);
-        entityManager.merge(screening);
-
+        screeningRepository.save(screening);
     }
 }
