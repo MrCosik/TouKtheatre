@@ -2,24 +2,22 @@ package pl.own.TouKTheatre.entity;
 
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "movie")
 public class Movie {
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "movie_id")
+    private Long movieId;
     @Column(name = "title")
     private String title;
     @Column(name = "length_in_minutes")
     private int lengthInMinutes;
 
-    @OneToMany
-    @JoinColumn(name = "movie_id")
-    private Set<Screening> screenings = new HashSet<>();
 
     public Movie() {
     }
@@ -33,8 +31,8 @@ public class Movie {
         return title;
     }
 
-    public Long getId() {
-        return id;
+    public Long getMovieId() {
+        return movieId;
     }
 
     public void setTitle(String title) {
@@ -49,19 +47,8 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMovieId(Long id) {
+        this.movieId = id;
     }
 
-    public Set<Screening> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(Set<Screening> screenings) {
-        this.screenings = screenings;
-    }
-
-    public void addScreening(Screening screening){
-        screenings.add(screening);
-    }
 }
