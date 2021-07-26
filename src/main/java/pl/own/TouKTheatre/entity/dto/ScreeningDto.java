@@ -3,6 +3,7 @@ package pl.own.TouKTheatre.entity.dto;
 public class ScreeningDto {
 
     private String timeOfStart;
+    private String day;
     private Long movieId;
     private Long roomId;
 
@@ -10,8 +11,9 @@ public class ScreeningDto {
     public ScreeningDto() {
     }
 
-    public ScreeningDto(String timeOfStart, Long movieId, Long roomId) {
+    public ScreeningDto(String timeOfStart, String day, Long movieId, Long roomId) {
         this.timeOfStart = timeOfStart;
+        this.day = day;
         this.movieId = movieId;
         this.roomId = roomId;
     }
@@ -20,23 +22,15 @@ public class ScreeningDto {
         return timeOfStart;
     }
 
-    public void setTimeOfStart(String timeOfStart) {
-        this.timeOfStart = timeOfStart;
+    public String getDay() {
+        return day;
     }
 
     public Long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
-    }
-
     public Long getRoomId() {
         return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
     }
 }

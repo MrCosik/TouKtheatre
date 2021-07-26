@@ -1,5 +1,6 @@
 package pl.own.TouKTheatre.service;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pl.own.TouKTheatre.entity.Screening;
 import pl.own.TouKTheatre.entity.dto.ScreeningDto;
@@ -20,13 +21,18 @@ public class ScreeningService {
     public List<ScreeningDto> getAllScreenings(){
 
         List<ScreeningDto> allScreenings = new ArrayList<>();
-        
+
         if(screeningRepository.findAll().size() == 0)
             return null;
 
         for(Screening screening : screeningRepository.findAll()){
-            allScreenings.add(new ScreeningDto(screening.getTimeOfStart(),screening.getMovie().getMovieId(),screening.getRoom().getRoomId()));
+            allScreenings.add(new ScreeningDto(screening.getTimeOfStart(),screening.getDay(),screening.getMovie().getMovieId(),screening.getRoom().getRoomId()));
         }
         return allScreenings;
+    }
+
+    public ResponseEntity<ScreeningDto> getSeatsForScreening(Long id) {
+
+        return null;
     }
 }

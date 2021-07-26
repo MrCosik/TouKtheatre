@@ -11,16 +11,27 @@ public class Room {
     @Column(name = "room_id")
     private Long roomId;
     @Column(name = "number")
-    private int number;
+    private int roomNumber;
     @Column(name = "number_of_seats")
     private int numberOfSeats;
+
+    @Transient
+    int[][] layout;
+
+
 
     public Room() {
     }
 
     public Room(int number, int numberOfSeats) {
-        this.number = number;
+        this.roomNumber = number;
         this.numberOfSeats = numberOfSeats;
+    }
+
+    public Room(int roomNumber, int numberOfSeats, int[][] layout) {
+        this.roomNumber = roomNumber;
+        this.numberOfSeats = numberOfSeats;
+        this.layout = layout;
     }
 
     public Long getRoomId() {
@@ -31,12 +42,12 @@ public class Room {
         this.roomId = id;
     }
 
-    public int getNumber() {
-        return number;
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setRoomNumber(int number) {
+        this.roomNumber = number;
     }
 
     public int getNumberOfSeats() {
@@ -47,4 +58,11 @@ public class Room {
         this.numberOfSeats = numberOfSeats;
     }
 
+    public int[][] getLayout() {
+        return layout;
+    }
+
+    public void setLayout(int[][] layout) {
+        this.layout = layout;
+    }
 }

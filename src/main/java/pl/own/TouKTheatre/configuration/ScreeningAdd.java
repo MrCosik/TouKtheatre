@@ -34,9 +34,9 @@ public class ScreeningAdd implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<Room> rooms = Arrays.asList(
-                new Room(1, 20),
-                new Room(2, 20),
-                new Room(3, 20)
+                new Room(1, 5, new int[][]{{0,0},{1,0},{0,1}}),
+                new Room(2, 5),
+                new Room(3, 5)
         );
 
         List<Movie> movies = Arrays.asList(
@@ -46,7 +46,7 @@ public class ScreeningAdd implements CommandLineRunner {
         );
 
 
-        Screening screening = new Screening("12:00", movies.get(1), rooms.get(1));
+        Screening screening = new Screening("12:00","3 kwietnia", movies.get(1), rooms.get(1));
         roomRepository.saveAll(rooms);
         movieRepository.saveAll(movies);
         screeningRepository.save(screening);

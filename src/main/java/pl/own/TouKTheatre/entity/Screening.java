@@ -16,6 +16,9 @@ public class Screening {
     @Column(name = "time_of_start")
     private String timeOfStart;
 
+    @Column(name = "day")
+    private String day;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movieId")
@@ -28,8 +31,9 @@ public class Screening {
     public Screening() {
     }
 
-    public Screening(String timeOfStart, Movie movie, Room room) {
+    public Screening(String timeOfStart, String day, Movie movie, Room room) {
         this.timeOfStart = timeOfStart;
+        this.day = day;
         this.movie = movie;
         this.room = room;
     }
@@ -66,7 +70,13 @@ public class Screening {
         this.room = room;
     }
 
+    public String getDay() {
+        return day;
+    }
 
+    public void setDay(String day) {
+        this.day = day;
+    }
 }
 
 
